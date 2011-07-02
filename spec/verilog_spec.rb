@@ -1,4 +1,5 @@
 require 'spec_helper'
+require 'pp'
 
 describe Verilog do
 
@@ -16,6 +17,7 @@ describe Verilog do
 
 endmodule
 }
+    test_one.module_name.should == "TEST_ONE"
   end
 
 
@@ -44,5 +46,22 @@ endmodule
       File.delete( test_two.absolute_filename )
   end
 
+  it "Check Instantiations" do
+    path = File.dirname( __FILE__ )
+
+    test_three = Verilog::File.new("test_three.v", {:path => File.join( path, 'fixtures') })
+    test_three.read_from_disk
+
+    test_three.instantiations.should == ["TEST_ONE", "TEST_TWO", "TEST_FOUR", "TEST_FIVE"]
+  end
+
+  it "Check Includes" do
+    path = File.dirname( __FILE__ )
+
+    test_four = Verilog::File.new("test_four.vh", {:path => File.join( path, 'fixtures') })
+    test_four.read_from_disk
+
+    test_four.includes.should == ["test_one.v", "test_three.v"]
+  end
 
 end
