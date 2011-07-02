@@ -17,13 +17,10 @@ module Verilog
     end
 
     def read
-      if Class::File.exist?( absolute_filename )
-        @contents = ''
-        f = Class::File.open(absolute_filename, "r") 
-        f.each_line do |line|
-          @contents += line
+      if ::File.exist?( absolute_filename )
+        ::File.open( absolute_filename, "rb") do |f| 
+          @contents = f.read 
         end
-        f.close
       else
         #TODO raise correct exception here
         puts "ERROR File Not Found #{absolute_filename}"
@@ -32,13 +29,13 @@ module Verilog
     end
 
     def save
-      f = Class::File.open( absolute_filename, "w" )
-      f.write @contents
-      f.close
+      ::File.open( absolute_filename, "w" ) do |f|
+        f.write @contents
+      end
     end
 
     def absolute_filename
-      Class::File.join( @options[:path], @filename ) 
+      ::File.join( @options[:path], @filename ) 
     end
 
   end
