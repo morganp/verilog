@@ -38,6 +38,30 @@ module Verilog
       ::File.join( @options[:path], @filename ) 
     end
 
-  end
+    def module_name
+        if @contents.match(/(^\s*module *)(.*)(;|\s*\()/i)
+          return $2
+        else
+          return ""
+        end
+    end
 
-end
+    def instantiations
+      inst = []
+      @contents.scan(/(^\s*)(\w*)\s+\w+\s*(\([.,\(\)\w\s]*\))?;/mi){ inst << $2 }
+      #Hack, module will also match the instatiation syntax, rempve via array subtraction
+      inst = inst - ['module']
+
+      return inst
+    end
+
+    def includes
+      inc = []
+      @contents.scan(/(^\s*`include [\'\"])(.*)([\'\"])/i){ inc << $2 }
+
+      return inc
+    end
+
+  end #class File
+
+end #modlue Verilog
