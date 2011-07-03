@@ -2,8 +2,8 @@
 module Verilog
 
   class File #< Class::File
-    attr_reader :filename, :options
-    attr_accessor :contents
+    attr_reader   :options
+    attr_accessor :filename, :contents
 
     def initialize( filename, options={} )
       @filename         = filename
