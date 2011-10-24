@@ -35,7 +35,14 @@ module Verilog
     end
 
     def absolute_filename
-      ::File.join( @options[:path], @filename ) 
+      if @options[:path] == ''
+        dir = @filename.dup
+      else
+        dir = ::File.join( @options[:path], @filename ) 
+      end
+      dir = ::File.expand_path( dir )
+
+      return dir
     end
 
     def module_name

@@ -3,7 +3,24 @@ require 'pp'
 
 describe Verilog do
 
-  it "Open file" do
+  it "Open file, with path as oart of filename" do
+    path = File.dirname( __FILE__ )
+
+    test_one = Verilog::File.new( File.join( path, 'fixtures', 'test_one.v' ) )
+    test_one.read_from_disk
+
+    test_one.contents.should    == 
+%{module TEST_ONE(
+  input rx,
+  output tx
+);
+
+endmodule
+}
+    test_one.module_name.should == "TEST_ONE"
+  end
+  
+  it "Open file, with specified path" do
     path = File.dirname( __FILE__ )
 
     test_one = Verilog::File.new("test_one.v", {:path => File.join( path, 'fixtures') })
