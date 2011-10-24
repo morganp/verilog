@@ -23,7 +23,7 @@ module Verilog
         end
       else
         #TODO raise correct exception here
-        puts "ERROR File Not Found #{absolute_filename}"
+        $stderr.puts "ERROR File Not Found #{absolute_filename}"
       end
 
     end
