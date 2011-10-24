@@ -1,9 +1,7 @@
 
 NAME="verilog"
 
-Dir.chdir( './lib/')
-puts require NAME
-Dir.chdir( './../')
+require File.join( File.dirname(__FILE__), 'lib', NAME )
 
 spec = Gem::Specification.new do |s|
    s.name         = NAME
