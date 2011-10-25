@@ -2,6 +2,14 @@ require 'spec_helper'
 require 'pp'
 
 describe Verilog do
+  it "Checking initialize equivalence, file and path verus absolute path" do
+    path = File.dirname( __FILE__ )
+
+    test_one = Verilog::File.new( File.join( path, 'fixtures', 'test_one.v' ) )
+    test_one.inspect.should == Verilog::File.new(  'test_one.v',{:path => File.join( path, 'fixtures')} ).inspect
+  end
+
+
 
   it "Open file, with path as oart of filename" do
     path = File.dirname( __FILE__ )
