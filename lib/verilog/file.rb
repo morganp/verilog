@@ -6,9 +6,19 @@ module Verilog
     attr_accessor :filename, :contents
 
     def initialize( filename, options={} )
-      @filename         = filename
+      @filename         = ::File.basename( filename )
       @options          = options
-      @options[:path] ||= ''
+
+      options[:path]  ||= ''
+      relative_path_added_with_file_name = filename.dup
+      #Remove the basename section of the filename
+      relative_path_added_with_file_name[@filename] = ''
+
+      @options[:path] = ::File.join( options[:path], relative_path_added_with_file_name )
+    end
+
+    def inspect
+      [":options => #{@options.inspect}", ":filename => #{@filename}", ":contents => #{@contents}"] 
     end
 
     #Alias method
@@ -35,11 +45,7 @@ module Verilog
     end
 
     def absolute_filename
-      if @options[:path] == ''
-        dir = @filename.dup
-      else
-        dir = ::File.join( @options[:path], @filename ) 
-      end
+      dir = ::File.join( @options[:path], @filename ) 
       dir = ::File.expand_path( dir )
 
       return dir
