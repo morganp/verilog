@@ -7,3 +7,4 @@ module Verilog
 end
 
 require 'verilog/file'
+require 'verilog/path'
