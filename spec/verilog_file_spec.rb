@@ -77,7 +77,7 @@ endmodule
     test_three = Verilog::File.new("test_three.v", {:path => File.join( path, 'fixtures') })
     test_three.read_from_disk
 
-    test_three.instantiations.should == ["TEST_ONE", "TEST_TWO", "TEST_FOUR", "TEST_FIVE"]
+    test_three.instantiations.should == ["TEST_ONE", "TEST_TWO", "TEST_FOUR", "TEST_FIVE", "TEST_SIX", "TEST_SEVEN", "TEST_EIGHT"]
   end
 
   it "Check Includes" do
