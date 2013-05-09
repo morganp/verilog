@@ -61,8 +61,8 @@ module Verilog
 
     def instantiations
       inst = []
-      @contents.scan(/(^\s*)(\w*)\s+\w+\s*(\([.,\(\)\w\s]*\))?;/mi){ inst << $2 }
       #Hack, module will also match the instatiation syntax, rempve via array subtraction
+      @contents.scan(/(^\s*)(\w+)(\s+#\([.,\(\)\w\s]*\))?(\s+\w+\s*)(\([.,\(\)\w\s]*\))?;/mi){ inst << $2 }
       inst = inst - ['module']
 
       return inst
