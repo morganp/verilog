@@ -11,6 +11,7 @@ module Verilog
 
     def load_path( paths )
       #path is single string or array of strings
+      paths = *paths #paths always becomes array
       paths.each do |path|
         files = Dir.glob( ::File.join( path, '*.*') )
         files.each do |file|
