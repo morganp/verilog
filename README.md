@@ -18,7 +18,7 @@ Usage
     test_one.contents = %{New Content}
     test_one.save
 
-Some more advanced uses include finding what modules are instatiated or included.
+Some more advanced uses include finding what modules are instantiated or included.
 
     require 'verilog'
     test_one = Verilog::File.new("test_one.v", {:path => '..' })
