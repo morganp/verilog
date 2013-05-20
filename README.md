@@ -1,6 +1,8 @@
 Verilog
 =======
 
+[![Gem Version](https://badge.fury.io/rb/verilog.png)](http://badge.fury.io/rb/verilog)
+
 Install
 -------
 
