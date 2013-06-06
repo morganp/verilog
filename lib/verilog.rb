@@ -6,5 +6,6 @@ module Verilog
   VERSION = '0.0.5'
 end
 
+require 'verilog/file_list'
 require 'verilog/file'
 require 'verilog/path'
