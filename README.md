@@ -39,14 +39,14 @@ TODO
 
 * Add port commands 
      
-     puts test_one.inputs
-     puts test_one.outputs
-     puts test_one.inouts
+    puts test_one.inputs  
+    puts test_one.outputs  
+    puts test_one.inouts  
 
 * Add function and task commands     
 
-     puts test_one.functions
-     puts test_one.tasks
+    puts test_one.functions  
+    puts test_one.tasks
 
 LICENSE
 -------
