@@ -1,0 +1,13 @@
+
+file_one.txt
+file_two.txt
+
+// Pullin Secondary File list
+-f ./secondary_file.list
+
+file_three.txt
+
+// Include full contents of a folder
+-incdir inc_dir_test
+
+file_four.txt
