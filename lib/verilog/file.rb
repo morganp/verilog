@@ -61,7 +61,9 @@ module Verilog
 
     def instantiations
       inst = []
-      @contents.scan(/(^\s*)(\w+)(\s+#\([.,\(\)\w\s]*\))?(\s+\w+\s*)(\([.,\(\)\w\s\/]*\))?;/mi){ inst << $2 }
+      # Negative look ahead to remove including module name and ports from instances.
+      #  (?!module|input|output|inout)
+      @contents.scan(/(^\s*)(?!module|input|output|inout)(\w+)(\s+#\([.,\(\)\w\s]*\))?(\s+\w+\s*)(\([.,\(\)\w\s\/]*\))?;/mi){ inst << $2 }
       #Hack, module will also match the instantiation syntax, remove via array subtraction
       inst = inst - ['module']
 
