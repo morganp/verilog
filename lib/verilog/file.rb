@@ -61,7 +61,7 @@ module Verilog
 
     def instantiations
       inst = []
-      @contents.scan(/(^\s*)(\w+)(\s+#\([.,\(\)\w\s]*\))?(\s+\w+\s*)(\([.,\(\)\w\s]*\))?;/mi){ inst << $2 }
+      @contents.scan(/(^\s*)(\w+)(\s+#\([.,\(\)\w\s]*\))?(\s+\w+\s*)(\([.,\(\)\w\s\/]*\))?;/mi){ inst << $2 }
       #Hack, module will also match the instantiation syntax, remove via array subtraction
       inst = inst - ['module']
 
